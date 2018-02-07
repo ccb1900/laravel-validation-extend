@@ -14,5 +14,12 @@
             "Waterloocode\\LaravelValidationExtend\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Waterloocode\\LaravelValidationExtend\\WaterloocodeLaravelValidationExtend"
+            ]
+        }
+    },
     "bin": ["bin/pds-skeleton"]
 }
