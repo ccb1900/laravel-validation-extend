@@ -5,30 +5,44 @@
  * Date: 2018/2/7
  * Time: 20:41
  */
-\Validator::extend('mobile',function ($attribute, $value, $parameters, $validator){
-    $mobile = new \Waterloocode\LaravelValidationExtend\Rules\Mobile();
-    return $mobile->passes($attribute, $value);
-});
-\Validator::extend('phone',function ($attribute, $value, $parameters, $validator){
-    $phone = new \Waterloocode\LaravelValidationExtend\Rules\Phone();
-    return $phone->passes($attribute, $value);
-});
-\Validator::extend('postcode',function ($attribute, $value, $parameters, $validator){
-    $postcode = new \Waterloocode\LaravelValidationExtend\Rules\PostCode();
-    return $postcode->passes($attribute, $value);
-},'');
+$registry = [
+    [
+        'name'=>'mobile',
+        'obj'=>new \Waterloocode\LaravelValidationExtend\Rules\Mobile()
+    ],
+    [
+        'name'=>'postcode',
+        'obj'=>new \Waterloocode\LaravelValidationExtend\Rules\PostCode()
+    ],
+    [
+        'name'=>'phone',
+        'obj'=>new \Waterloocode\LaravelValidationExtend\Rules\Phone()
+    ],
+    [
+        'name'=>'cn',
+        'obj'=>new \Waterloocode\LaravelValidationExtend\Rules\Chinese()
+    ],
+    [
+        'name'=>'cn_dash',
+        'obj'=>new \Waterloocode\LaravelValidationExtend\Rules\ChineseDash()
+    ],
+    [
+        'name'=>'cn_num',
+        'obj'=>new \Waterloocode\LaravelValidationExtend\Rules\ChineseNum()
+    ],
+];
 
-\Validator::replacer('phone', function ($message, $attribute, $rule, $parameters) {
-    $phone = new \Waterloocode\LaravelValidationExtend\Rules\Phone();
+foreach ($registry as $item)
+{
+    $rules = $item['obj'];
+    \Validator::replacer($item['name'], function ($message, $attribute, $rule, $parameters) use ($rules) {
+        return $rules->message();
+    });
 
-    return $phone->message();
-});
-\Validator::replacer('postcode', function ($message, $attribute, $rule, $parameters) {
-    $postcode = new \Waterloocode\LaravelValidationExtend\Rules\PostCode();
+    \Validator::extend($item['name'],function ($attribute, $value, $parameters, $validator) use ($rules){
+        return $rules->passes($attribute, $value);
+    });
+}
 
-    return $postcode->message();
-});
-\Validator::replacer('mobile', function ($message, $attribute, $rule, $parameters) {
-    $mobile = new \Waterloocode\LaravelValidationExtend\Rules\Mobile();
-    return $mobile->message();
-});
+
+
