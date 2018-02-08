@@ -1,4 +1,8 @@
 # waterloocode/laravel-validation-extend
+### 安装
+```
+composer require waterloocode/laravel-validation-extend
+```
 ### 描述
 laravel验证扩展，添加手机，电话，邮编。
 ### php包参考
