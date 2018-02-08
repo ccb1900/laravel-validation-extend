@@ -1,17 +1,12 @@
 {
     "name": "waterloocode/laravel-validation-extend",
     "type": "standard",
-    "description": "Standard for PHP package skeletons.",
-    "homepage": "https://github.com/php-pds/skeleton",
+    "description": "a laravel validation extend package",
+    "homepage": "https://github.com/bluegeek/laravel-validation-extend.git",
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Waterloocode\\LaravelValidationExtend\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Waterloocode\\LaravelValidationExtend\\": "tests/"
         }
     },
     "extra": {
@@ -20,6 +15,5 @@
                 "Waterloocode\\LaravelValidationExtend\\WaterloocodeLaravelValidationExtend"
             ]
         }
-    },
-    "bin": ["bin/pds-skeleton"]
+    }
 }
