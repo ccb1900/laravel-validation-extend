@@ -1,4 +1,8 @@
 # waterloocode/laravel-validation-extend
+### 安装
+```
+composer require waterloocode/laravel-validation-extend
+```
 ### 描述
 laravel验证扩展，添加手机，电话，邮编。
 ### php包参考
@@ -16,9 +20,9 @@ $validator = Validator::make([
     'phone'=>['phone'],
 ]);
 ```
-- 中文
-- 中文，字母，下划线，中杠线,数字
-- 中文，字母，数字
-- 手机号
-- 电话
-- 邮编
+- 中文  cn
+- 中文，字母，下划线，中杠线,数字 cn_dash
+- 中文，字母，数字 cn_num
+- 手机号 mobile
+- 电话 phone
+- 邮编 postcode
